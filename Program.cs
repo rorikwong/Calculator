@@ -1,49 +1,19 @@
 ﻿using System;
+using CalculatorLibrary;
 
-namespace Calculator
+namespace CalculatorProgram
 {
-    class Calculator
-    {
-        public static double DoOperation(double num1, double num2, string op)
-        {
-            double result = double.NaN; // Default value is "not-a-number" which we use if an operation, such as division, could result in an error.
-
-            // Use a switch statement to do the math.
-            switch (op)
-            {
-                case "a":
-                    result = num1 + num2;
-                    break;
-                case "s":
-                    result = num1 - num2;
-                    break;
-                case "m":
-                    result = num1 * num2;
-                    break;
-                case "d":
-                    // Ask the user to enter a non-zero divisor.
-                    if (num2 != 0)
-                    {
-                        result = num1 / num2;
-                    }
-                    break;
-                // Return text for an incorrect option entry.
-                default:
-                    break;
-            }
-            return result;
-        }
-    }
 
     class Program
     {
         static void Main(string[] args)
         {
             bool endApp = false;
-            // Display title as the My calculator app.
-            Console.WriteLine("My Calculator\r");
-            Console.WriteLine("------------------------\n");
+            // Display title as My calculator app.
+            Console.WriteLine("My Calculator in C#\r");
+           Console.WriteLine("--------------------\n");
 
+            Calculator calculator = new Calculator();
             while (!endApp)
             {
                 // Declare variables and set to empty.
@@ -51,7 +21,7 @@ namespace Calculator
                 string numInput2 = "";
                 double result = 0;
 
-                // Ask the user to type the first integer
+                // Ask the user to type the first number.
                 Console.Write("Type a number, and then press Enter: ");
                 numInput1 = Console.ReadLine();
 
@@ -62,7 +32,7 @@ namespace Calculator
                     numInput1 = Console.ReadLine();
                 }
 
-                // Ask the user to type the second integer
+                // Ask the user to type the second number.
                 Console.Write("Type another number, and then press Enter: ");
                 numInput2 = Console.ReadLine();
 
@@ -73,7 +43,7 @@ namespace Calculator
                     numInput2 = Console.ReadLine();
                 }
 
-                // Ask the user to choose an operator
+                // Ask the user to choose an operator.
                 Console.WriteLine("Choose an operator from the following list:");
                 Console.WriteLine("\ta - Add");
                 Console.WriteLine("\ts - Subtract");
@@ -85,7 +55,7 @@ namespace Calculator
 
                 try
                 {
-                    result = Calculator.DoOperation(cleanNum1, cleanNum2, op);
+                    result = calculator.DoOperation(cleanNum1, cleanNum2, op);
                     if (double.IsNaN(result))
                     {
                         Console.WriteLine("This operation will result in a mathematical error.\n");
@@ -105,6 +75,8 @@ namespace Calculator
 
                 Console.WriteLine("\n"); // Friendly linespacing.
             }
+            // Add call to close the JSON writer before return
+            calculator.Finish();
             return;
         }
     }
