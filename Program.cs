@@ -9,19 +9,19 @@ namespace CalculatorProgram
         static void Main(string[] args)
         {
             bool endApp = false;
-            // Display title as My calculator app.
+            // Display title as My Calculator app.
             Console.WriteLine("My Calculator in C#\r");
            Console.WriteLine("--------------------\n");
 
             Calculator calculator = new Calculator();
             while (!endApp)
             {
-                // Declare variables and set to empty.
+                // Declare variables and set to empty
                 string numInput1 = "";
                 string numInput2 = "";
                 double result = 0;
 
-                // Ask the user to type the first number.
+                // Ask the user to type the first integer
                 Console.Write("Type a number, and then press Enter: ");
                 numInput1 = Console.ReadLine();
 
@@ -32,7 +32,7 @@ namespace CalculatorProgram
                     numInput1 = Console.ReadLine();
                 }
 
-                // Ask the user to type the second number.
+                // Ask the user to type the second integer
                 Console.Write("Type another number, and then press Enter: ");
                 numInput2 = Console.ReadLine();
 
@@ -49,7 +49,7 @@ namespace CalculatorProgram
                 Console.WriteLine("\ts - Subtract");
                 Console.WriteLine("\tm - Multiply");
                 Console.WriteLine("\td - Divide");
-                Console.Write("Your option? ");
+                Console.Write("Your option? Press enter to continue");
 
                 string op = Console.ReadLine();
 
@@ -69,7 +69,7 @@ namespace CalculatorProgram
 
                 Console.WriteLine("------------------------\n");
 
-                // Wait for the user to respond before closing.
+                // Wait for the user to respond before closing out application
                 Console.Write("Press 'n' and Enter to close the app, or press any other key and Enter to continue: ");
                 if (Console.ReadLine() == "n") endApp = true;
 
